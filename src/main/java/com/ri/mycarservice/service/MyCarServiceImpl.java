@@ -1,7 +1,7 @@
 package com.ri.mycarservice.service;
 
 import com.ri.mycarservice.component.LoadDatabase;
-import com.ri.mycarservice.exceptions.CarNotFoundOrWrongIdException;
+import com.ri.mycarservice.exceptions.CarNotFoundException;
 import com.ri.mycarservice.model.Car;
 import com.ri.mycarservice.repository.CarMakeList;
 import com.ri.mycarservice.repository.CarMakeListRepository;
@@ -31,6 +31,6 @@ public class MyCarServiceImpl implements MyCarService {
     public Car getCarDetailsById(Long id) {
         logger.debug(String.format("getCarDetails service implementation was invoked with id: %s", id.toString()));
         return carMakeListRepository.findById(id)
-                    .orElseThrow(()-> new CarNotFoundOrWrongIdException("Could not find car with id: " + id));
+                    .orElseThrow(()-> new CarNotFoundException("Could not find car with id: " + id));
     }
 }

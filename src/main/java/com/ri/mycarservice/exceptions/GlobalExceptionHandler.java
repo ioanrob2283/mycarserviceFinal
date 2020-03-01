@@ -13,8 +13,8 @@ import java.time.format.DateTimeFormatter;
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(CarNotFoundOrWrongIdException.class)
-    public ResponseEntity<ErrorDetails> handleCarNotFoundException(CarNotFoundOrWrongIdException ex, WebRequest request) {
+    @ExceptionHandler(CarNotFoundException.class)
+    public ResponseEntity<ErrorDetails> handleCarNotFoundException(CarNotFoundException ex, WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails( LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")), ex.getMessage());
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
